@@ -1,25 +1,7 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
-
 <div class="col-sm-offset-4 col-sm-4 col-xs-12">
   <h2 class="text-center">Sign up</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form"}) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {multipart: :true, class: "form"}) do |f| %>
     <%= devise_error_messages! %>
 
     <div class="form-group">
@@ -40,8 +22,15 @@
       <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
     </div>
 
+    <!-- Field for image upload -->
+    <div class="form-group">
+      <%= f.label :avatar do %><br />
+        <%= f.file_field :avatar, class: "form-control" %>
+        <%= f.hidden_field :avatar_cache %>
+      <% end %>
+    </div>
+
     <%= f.submit "Sign up", class: "btn btn-primary btn-lg" %>
   <% end %>
 
 </div>
-<%= render "admins/shared/links" %>

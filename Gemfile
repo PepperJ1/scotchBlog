@@ -58,3 +58,14 @@ gem 'simple_form', '~> 3.2'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'ckeditor', '~> 4.1'
 gem 'devise'
+gem 'carrierwave'
+gem 'mini_magick'
+
+group :development, :test do
+  gem "database_cleaner"
+  gem "rspec-rails"
+end
+group :test do
+  gem "capybara"
+  gem "selenium-webdriver"
+end
